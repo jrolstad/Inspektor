@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Web.Test", "Inspe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Test", "Inspektor.Test\Inspektor.Test.csproj", "{6B1110BA-600F-4570-8B48-EC5191506072}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{78075C2D-9ABC-4CEC-B097-519F0740D79D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,5 +42,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B1110BA-600F-4570-8B48-EC5191506072} = {78075C2D-9ABC-4CEC-B097-519F0740D79D}
+		{5A38EBE8-5347-47DB-9D16-2477BF19714E} = {78075C2D-9ABC-4CEC-B097-519F0740D79D}
 	EndGlobalSection
 EndGlobal

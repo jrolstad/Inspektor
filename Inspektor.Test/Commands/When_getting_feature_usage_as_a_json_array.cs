@@ -4,6 +4,7 @@ using System.Linq;
 using FizzWare.NBuilder;
 using Inspector.Web.Infrastructure;
 using Inspektor.Entities;
+using Inspektor.Extensions;
 using Inspektor.Models;
 using NUnit.Framework;
 using Ninject;
@@ -43,7 +44,7 @@ namespace Inspektor.Test.Commands
         public void Then_the_first_item_is_the_header_row()
         {
             // Assert
-            Assert.That(_result[0], Is.EquivalentTo(new[] { "Application", "Feature", "Usage", "UsedAt", "UsedBy" }));
+            Assert.That(_result[0], Is.EquivalentTo(new[] { "Application", "Feature","Notes", "Usage", "UsedBy", "Year", "Month", "Day", "Hour", "Minute" }));
         }
 
         [Test]
@@ -69,9 +70,14 @@ namespace Inspektor.Test.Commands
         {
             return r[0] == featureUsage.ApplicationName
                    && r[1] == featureUsage.FeatureName
-                   && r[2] == "1"
-                   && r[3] == featureUsage.UsedDate.ToString()
-                   && r[4] == featureUsage.UsedBy;
+                   && r[2] == featureUsage.Notes
+                   && r[3] == "1"
+                   && r[4] == featureUsage.UsedBy.WithCleanUserName()
+                   && r[5] == featureUsage.UsedDate.Year.ToString()
+                   && r[6] == featureUsage.UsedDate.Month.ToString()
+                   && r[7] == featureUsage.UsedDate.Day.ToString()
+                   && r[8] == featureUsage.UsedDate.Hour.ToString()
+                   && r[9] == featureUsage.UsedDate.Minute.ToString();
         }
     }
 }

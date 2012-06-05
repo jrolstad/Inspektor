@@ -22,9 +22,14 @@ namespace Inspektor.Test.Commands
         [Test]
         [TestCase( "Application", "string" )]
         [TestCase( "Feature", "string" )]
+        [TestCase( "Notes", "string" )]
         [TestCase( "UsedBy", "string" )]
-        [TestCase( "UsedAt", "date" )]
         [TestCase( "Usage", "integer" )]
+        [TestCase( "Year", "integer" )]
+        [TestCase( "Month", "integer" )]
+        [TestCase( "Day", "integer" )]
+        [TestCase( "Hour", "integer" )]
+        [TestCase( "Minute", "integer" )]
         public void When_getting_fields_then_they_are_obtained_with_the_correct_types( string name, string type )
         {
             // Arrange

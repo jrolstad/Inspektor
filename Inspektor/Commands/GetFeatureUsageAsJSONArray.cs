@@ -25,15 +25,20 @@ namespace Inspektor.Commands
         public IEnumerable<string[]> Execute( FeatureUsageRequest parameters )
         {
             var usages = _repository.Find();
-            var headerRow = new[] {"Application", "Feature", "Usage", "UsedAt", "UsedBy"};
+            var headerRow = new[] {"Application", "Feature", "Notes","Usage","UsedBy","Year","Month","Day","Hour","Minute"};
 
             var dataRows = usages.Select(u=>new[]
                                                 {
                                                     u.ApplicationName,
                                                     u.FeatureName,
+                                                    u.Notes.Replace(":"," "),
                                                     "1",
-                                                    u.UsedDate.ToString(),
-                                                    u.UsedBy.WithCleanUserName()
+                                                    u.UsedBy.WithCleanUserName(),
+                                                    u.UsedDate.Year.ToString(),
+                                                    u.UsedDate.Month.ToString(),
+                                                    u.UsedDate.Day.ToString(),
+                                                    u.UsedDate.Hour.ToString(),
+                                                    u.UsedDate.Minute.ToString(),
                                                 });
 
             var jsonArray = new List<string[]> {headerRow};
