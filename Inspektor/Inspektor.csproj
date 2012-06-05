@@ -52,6 +52,7 @@
     <Compile Include="Data\DapperFeatureUsageRepository.cs" />
     <Compile Include="Entities\FeatureUsageRequest.cs" />
     <Compile Include="Entities\PivotField.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="IRepository.cs" />

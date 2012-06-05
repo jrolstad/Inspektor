@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Inspektor.Entities;
+using Inspektor.Extensions;
 using Inspektor.Models;
 
 namespace Inspektor.Commands
@@ -26,7 +27,14 @@ namespace Inspektor.Commands
             var usages = _repository.Find();
             var headerRow = new[] {"Application", "Feature", "Usage", "UsedAt", "UsedBy"};
 
-            var dataRows = usages.Select(u=>new[]{u.ApplicationName,u.FeatureName,"1",u.UsedDate.ToString(),u.UsedBy.Replace(@"\",@"\\")});
+            var dataRows = usages.Select(u=>new[]
+                                                {
+                                                    u.ApplicationName,
+                                                    u.FeatureName,
+                                                    "1",
+                                                    u.UsedDate.ToString(),
+                                                    u.UsedBy.WithCleanUserName()
+                                                });
 
             var jsonArray = new List<string[]> {headerRow};
             jsonArray.AddRange(dataRows);
