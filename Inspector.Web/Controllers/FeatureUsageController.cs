@@ -12,6 +12,5 @@ namespace Inspector.Web.Controllers
         {
             return View();
         }
-
     }
 }
