@@ -88,7 +88,8 @@
     <Compile Include="Infrastructure\DependencyInjection\CommandModule.cs" />
     <Compile Include="Infrastructure\DependencyInjection\DataModule.cs" />
     <Compile Include="Infrastructure\DependencyInjection\MapperModule.cs" />
-    <Compile Include="Models\FeatureUsageViewModel.cs" />
+    <Compile Include="Models\FeatureUsageRequest.cs" />
+    <Compile Include="Models\PivotField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +103,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery_pivot.js" />
+    <Content Include="Scripts\pivot.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

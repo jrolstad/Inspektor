@@ -1,6 +1,98 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Feature Analaysis";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br/>
 
-<h2>Index</h2>
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<div class="subnav">
+      <ul class="nav nav-pills">
+        
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Row Labels
+                  <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu stop-propagation" style="overflow:auto;max-height:450px;padding:10px;">
+                  <div id="row-label-fields"></div>
+              </ul>
+          </li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Filter Fields
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu stop-propagation" style="overflow:auto;max-height:450px;padding:10px;">
+            <div id="filter-list"></div>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Column Labels
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu stop-propagation" style="overflow:auto;max-height:450px;padding:10px;">
+            <div id="column-label-fields"></div>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Summary
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu stop-propagation" style="overflow:auto;max-height:450px;padding:10px;">
+            <div id="summary-fields"></div>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+<div id="pivot-menu-container"></div>
+<div id="results"></div>
+
+
+<!-- Javascript includes -->
+<script src="@Url.Content("~/Scripts/pivot.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery_pivot.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // prevent dropdown from closing after selection
+        $('.stop-propagation').click(function (event) {
+            event.stopPropagation();
+        });
+
+        $.ajax({
+            url: "@Url.Action("AvailableFields")",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (fields) {
+                
+                   $.ajax({
+                        url: "@Url.Action("FeatureUsage")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            $('#pivot-demo').pivot_display('setup', { json: data, fields: fields });
+                        },
+                        error: function (e) { alert(e);}
+                    });
+
+               
+            },
+            error: function (e) { alert(e);}
+        });
+
+        
+
+    });
+</script>
