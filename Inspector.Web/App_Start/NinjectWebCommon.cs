@@ -1,3 +1,4 @@
+using Inspector.Web.Infrastructure;
 using Inspector.Web.Infrastructure.DependencyInjection;
 using Ninject.Modules;
 
@@ -56,12 +57,7 @@ namespace Inspector.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Load(new INinjectModule[]
-                            {
-                                new CommandModule(), 
-                                new DataModule(), 
-                                new MapperModule()
-                            });
+           ApplicationConfiguration.Configure(kernel);
         }        
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Inspektor.Data.Models
+namespace Inspektor.Models
 {
     public class FeatureUsage
     {
@@ -8,8 +8,10 @@ namespace Inspektor.Data.Models
 
         public Feature Feature { get; set; }
 
+        public string Notes { get; set; }
+
         public string UsedBy { get; set; }
 
-        public DateTime UsedAt { get; set; }
+        public DateTime UsedDate { get; set; }
     }
 }

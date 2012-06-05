@@ -5,14 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CA1DCC84-4550-4AD8-BAD0-089B704C407F}</ProjectGuid>
+    <ProjectGuid>{5A38EBE8-5347-47DB-9D16-2477BF19714E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Inspektor</RootNamespace>
-    <AssemblyName>Inspektor</AssemblyName>
+    <RootNamespace>Inspektor.Web.Test</RootNamespace>
+    <AssemblyName>Inspektor.Web.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Inspektor\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FizzWare.NBuilder">
+      <HintPath>..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,13 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\GetFeatureUsageAsJSONArray.cs" />
-    <Compile Include="Commands\GetPivotFieldsCommand.cs" />
-    <Compile Include="Entities\FeatureUsageRequest.cs" />
-    <Compile Include="Entities\PivotField.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IMapper.cs" />
+    <Compile Include="Mappers\When_mapping_a_feature_usage_request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Inspector.Web\Inspector.Web.csproj">
+      <Project>{63B5DF76-318E-417E-8A36-AACFF4EB664F}</Project>
+      <Name>Inspector.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inspektor\Inspektor.csproj">
+      <Project>{CA1DCC84-4550-4AD8-BAD0-089B704C407F}</Project>
+      <Name>Inspektor</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

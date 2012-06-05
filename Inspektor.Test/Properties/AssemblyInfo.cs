@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Inspektor.Data")]
+[assembly: AssemblyTitle("Inspektor.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Inspektor.Data")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCompany("Parametric Portfolio Associates")]
+[assembly: AssemblyProduct("Inspektor.Test")]
+[assembly: AssemblyCopyright("Copyright © Parametric Portfolio Associates 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8265134d-0ef0-48e2-bb98-d482d938b1c6")]
+[assembly: Guid("8597331f-4392-49ef-b584-6646757e1d37")]
 
 // Version information for an assembly consists of the following four values:
 //

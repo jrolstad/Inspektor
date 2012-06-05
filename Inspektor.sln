@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Data", "Inspektor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor", "Inspektor\Inspektor.csproj", "{CA1DCC84-4550-4AD8-BAD0-089B704C407F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Web.Test", "Inspektor.Web.Test\Inspektor.Web.Test.csproj", "{5A38EBE8-5347-47DB-9D16-2477BF19714E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Test", "Inspektor.Test\Inspektor.Test.csproj", "{6B1110BA-600F-4570-8B48-EC5191506072}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{CA1DCC84-4550-4AD8-BAD0-089B704C407F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA1DCC84-4550-4AD8-BAD0-089B704C407F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA1DCC84-4550-4AD8-BAD0-089B704C407F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A38EBE8-5347-47DB-9D16-2477BF19714E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A38EBE8-5347-47DB-9D16-2477BF19714E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A38EBE8-5347-47DB-9D16-2477BF19714E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A38EBE8-5347-47DB-9D16-2477BF19714E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B1110BA-600F-4570-8B48-EC5191506072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1110BA-600F-4570-8B48-EC5191506072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1110BA-600F-4570-8B48-EC5191506072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1110BA-600F-4570-8B48-EC5191506072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

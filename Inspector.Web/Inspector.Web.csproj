@@ -85,11 +85,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ApplicationConfiguration.cs" />
     <Compile Include="Infrastructure\DependencyInjection\CommandModule.cs" />
     <Compile Include="Infrastructure\DependencyInjection\DataModule.cs" />
     <Compile Include="Infrastructure\DependencyInjection\MapperModule.cs" />
-    <Compile Include="Models\FeatureUsageRequest.cs" />
-    <Compile Include="Models\PivotField.cs" />
+    <Compile Include="Mappers\FeatureUsageRequestMapper.cs" />
+    <Compile Include="Models\FeatureUsageWebRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FeatureUsage\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Inspektor\Inspektor.csproj">
+      <Project>{CA1DCC84-4550-4AD8-BAD0-089B704C407F}</Project>
+      <Name>Inspektor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

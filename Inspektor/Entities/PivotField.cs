@@ -1,4 +1,4 @@
-﻿namespace Inspector.Web.Models
+namespace Inspektor.Entities
 {
     public class PivotField
     {

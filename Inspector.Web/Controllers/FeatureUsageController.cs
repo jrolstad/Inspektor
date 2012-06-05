@@ -1,47 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Inspector.Web.Models;
+using Inspektor;
+using Inspektor.Entities;
 
 namespace Inspector.Web.Controllers
 {
     [OutputCache(Duration = 0, VaryByParam = "None")]
     public class FeatureUsageController : Controller
     {
+        private readonly ICommand<string, IEnumerable<PivotField>> _getPivotFieldsCommand;
+        private readonly ICommand<FeatureUsageRequest, IEnumerable<string[]>> _getFeatureUsageCommand;
+        private readonly IMapper<FeatureUsageWebRequest, FeatureUsageRequest> _featureUsageRequestMapper;
+
+        /// <summary>
+        /// Constructor with dependencies
+        /// </summary>
+        /// <param name="getPivotFieldsCommand"></param>
+        /// <param name="getFeatureUsageCommand"></param>
+        /// <param name="featureUsageRequestMapper"></param>
+        public FeatureUsageController(
+            ICommand<string,IEnumerable<PivotField>> getPivotFieldsCommand,
+            ICommand<FeatureUsageRequest, IEnumerable<string[]>> getFeatureUsageCommand,
+            IMapper<FeatureUsageWebRequest,FeatureUsageRequest> featureUsageRequestMapper
+            )
+        {
+            _getPivotFieldsCommand = getPivotFieldsCommand;
+            _getFeatureUsageCommand = getFeatureUsageCommand;
+            _featureUsageRequestMapper = featureUsageRequestMapper;
+        }
+
+        /// <summary>
+        /// Shows the main index view page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Obtains available fields for the view
+        /// </summary>
+        /// <returns></returns>
         public JsonResult AvailableFields()
         {
-            var fields = new[]
-                             {
-                                 new PivotField{name = "Application",type = "string",filterable = true,columnLabelable = true,labelable = true},
-                                 new PivotField{name = "Feature",type = "string",filterable = true,columnLabelable = true,labelable = true},
-                                 new PivotField{name = "UsedBy",type = "string",filterable = true,columnLabelable = true,labelable = true},
-                                 new PivotField{name = "UsedAt",type = "date",filterable = true,columnLabelable = true,labelable = true},
-                                 new PivotField{name = "Usage",type = "integer",summarizable  = "sum"}
-                             };
+            var fields = _getPivotFieldsCommand.Execute(null);
 
             return Json(fields, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult FeatureUsage(FeatureUsageRequest request)
+        /// <summary>
+        /// Obtains usage details for the given parameters in the request
+        /// </summary>
+        /// <param name="webRequest"></param>
+        /// <returns></returns>
+        public JsonResult FeatureUsage(FeatureUsageWebRequest webRequest)
         {
-            var usageString = new[]
-                                  {
-                                      new[]{"Application","Feature","Usage","UsedAt","UsedBy"},
-                                      new[]{"Magnet","Home","1","2012-05-02","PARAPORT\\User1"},
-                                      new[]{"Magnet","Home","1","2012-05-02","PARAPORT\\User2"},
-                                      new[]{"Magnet","FX","1","2012-05-01","PARAPORT\\User2"},
-                                      new[]{"Verona","Bias","1","2012-05-06","PARAPORT\\User1"},
-                                  };
+            var request = _featureUsageRequestMapper.Map(webRequest);
+            var usage = _getFeatureUsageCommand.Execute(request);
 
-            return Json(usageString, JsonRequestBehavior.AllowGet);
+            return Json(usage, JsonRequestBehavior.AllowGet);
         }
     }
 }
