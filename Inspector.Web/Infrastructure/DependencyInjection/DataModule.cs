@@ -1,5 +1,6 @@
 ﻿using Inspektor;
 using Inspektor.Data;
+using Inspektor.Models;
 using Ninject.Modules;
 
 namespace Inspector.Web.Infrastructure.DependencyInjection
@@ -8,7 +9,7 @@ namespace Inspector.Web.Infrastructure.DependencyInjection
     {
         public override void Load()
         {
-            Bind<IRepository>().To<MemoryRepository>();
+            Bind<IRepository<FeatureUsage>>().To<DapperFeatureUsageRepository>();
         }
     }
 }

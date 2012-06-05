@@ -27,13 +27,11 @@ namespace Inspektor.Test.Commands
 
             _usagesInRepository = new EnumerableQuery<FeatureUsage>(Builder<FeatureUsage>
                                                                         .CreateListOfSize(10)
-                                                                        .All()
-                                                                        .Do(f=>f.Feature = Builder<Feature>.CreateNew().Build())
                                                                         .Build());
-            var repository = MockRepository.GenerateStub<IRepository>();
-            repository.Stub(r => r.Find<FeatureUsage>()).Return(new EnumerableQuery<FeatureUsage>(_usagesInRepository));
+            var repository = MockRepository.GenerateStub<IRepository<FeatureUsage>>();
+            repository.Stub(r => r.Find()).Return(new EnumerableQuery<FeatureUsage>(_usagesInRepository));
 
-            _kernel.Rebind<IRepository>().ToConstant(repository);
+            _kernel.Rebind<IRepository<FeatureUsage>>().ToConstant(repository);
 
             var request = Builder<FeatureUsageRequest>.CreateNew().Build();
             var command = _kernel.Get<ICommand<FeatureUsageRequest, IEnumerable<string[]>>>();
@@ -69,8 +67,8 @@ namespace Inspektor.Test.Commands
 
         private static bool IsMatch( FeatureUsage featureUsage, string[] r )
         {
-            return r[0] == featureUsage.Feature.ApplicationName
-                   && r[1] == featureUsage.Feature.FeatureName
+            return r[0] == featureUsage.ApplicationName
+                   && r[1] == featureUsage.FeatureName
                    && r[2] == "1"
                    && r[3] == featureUsage.UsedDate.ToString()
                    && r[4] == featureUsage.UsedBy;

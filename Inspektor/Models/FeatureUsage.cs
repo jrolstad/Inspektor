@@ -4,9 +4,9 @@ namespace Inspektor.Models
 {
     public class FeatureUsage
     {
-        public int FeatureUsageId { get; set; }
+        public string ApplicationName { get; set; }
 
-        public Feature Feature { get; set; }
+        public string FeatureName { get; set; }
 
         public string Notes { get; set; }
 
