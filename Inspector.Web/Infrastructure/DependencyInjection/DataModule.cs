@@ -1,4 +1,6 @@
-﻿using Ninject.Modules;
+﻿using Inspektor;
+using Inspektor.Data;
+using Ninject.Modules;
 
 namespace Inspector.Web.Infrastructure.DependencyInjection
 {
@@ -6,7 +8,7 @@ namespace Inspector.Web.Infrastructure.DependencyInjection
     {
         public override void Load()
         {
-            
+            Bind<IRepository>().To<MemoryRepository>();
         }
     }
 }

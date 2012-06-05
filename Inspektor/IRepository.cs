@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
-namespace Inspektor.Data
+namespace Inspektor
 {
     /// <summary>
     /// Repository Interface for data access
     /// </summary>
-    public interface IRepository
+    public interface IRepository: IDisposable
     {
         /// <summary>
         /// Queries the data source

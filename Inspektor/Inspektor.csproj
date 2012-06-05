@@ -44,10 +44,14 @@
   <ItemGroup>
     <Compile Include="Commands\GetFeatureUsageAsJSONArray.cs" />
     <Compile Include="Commands\GetPivotFieldsCommand.cs" />
+    <Compile Include="Data\MemoryRepository.cs" />
     <Compile Include="Entities\FeatureUsageRequest.cs" />
     <Compile Include="Entities\PivotField.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IMapper.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\FeatureUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

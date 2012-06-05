@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Inspektor.Data.Models
+namespace Inspektor.Models
 {
     public class Feature
     {

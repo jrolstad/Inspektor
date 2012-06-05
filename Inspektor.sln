@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F34548
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspector.Web", "Inspector.Web\Inspector.Web.csproj", "{63B5DF76-318E-417E-8A36-AACFF4EB664F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Data", "Inspektor.Data\Inspektor.Data.csproj", "{0990B495-6C06-4EDE-B682-9EC59C32BFAE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor", "Inspektor\Inspektor.csproj", "{CA1DCC84-4550-4AD8-BAD0-089B704C407F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspektor.Web.Test", "Inspektor.Web.Test\Inspektor.Web.Test.csproj", "{5A38EBE8-5347-47DB-9D16-2477BF19714E}"
@@ -27,10 +25,6 @@ Global
 		{63B5DF76-318E-417E-8A36-AACFF4EB664F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63B5DF76-318E-417E-8A36-AACFF4EB664F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63B5DF76-318E-417E-8A36-AACFF4EB664F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0990B495-6C06-4EDE-B682-9EC59C32BFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0990B495-6C06-4EDE-B682-9EC59C32BFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0990B495-6C06-4EDE-B682-9EC59C32BFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0990B495-6C06-4EDE-B682-9EC59C32BFAE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA1DCC84-4550-4AD8-BAD0-089B704C407F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA1DCC84-4550-4AD8-BAD0-089B704C407F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA1DCC84-4550-4AD8-BAD0-089B704C407F}.Release|Any CPU.ActiveCfg = Release|Any CPU

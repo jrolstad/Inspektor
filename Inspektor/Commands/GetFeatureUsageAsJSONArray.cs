@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Inspektor.Entities;
+using Inspektor.Models;
 
 namespace Inspektor.Commands
 {
@@ -8,18 +10,28 @@ namespace Inspektor.Commands
     /// </summary>
     public class GetFeatureUsageAsJSONArray : ICommand<FeatureUsageRequest, IEnumerable<string[]>>
     {
+        private readonly IRepository _repository;
+
+        /// <summary>
+        /// Constructor with dependencies
+        /// </summary>
+        /// <param name="repository"></param>
+        public GetFeatureUsageAsJSONArray(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         public IEnumerable<string[]> Execute( FeatureUsageRequest parameters )
         {
-            var usageString = new[]
-                                  {
-                                      new[]{"Application","Feature","Usage","UsedAt","UsedBy"},
-                                      new[]{"Magnet","Home","1","2012-05-02","PARAPORT\\User1"},
-                                      new[]{"Magnet","Home","1","2012-05-02","PARAPORT\\User2"},
-                                      new[]{"Magnet","FX","1","2012-05-01","PARAPORT\\User2"},
-                                      new[]{"Verona","Bias","1","2012-05-06","PARAPORT\\User1"},
-                                  };
+            var usages = _repository.Find<FeatureUsage>();
+            var headerRow = new[] {"Application", "Feature", "Usage", "UsedAt", "UsedBy"};
 
-            return usageString;
+            var dataRows = usages.Select(u=>new[]{u.Feature.ApplicationName,u.Feature.FeatureName,"1",u.UsedDate.ToString(),u.UsedBy.Replace(@"\",@"\\")});
+
+            var jsonArray = new List<string[]> {headerRow};
+            jsonArray.AddRange(dataRows);
+
+            return jsonArray;
         }
     }
 }
