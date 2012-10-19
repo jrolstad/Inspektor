@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Inspector.Web.Models;
 using Inspektor;
 using Inspektor.Entities;
+using Newtonsoft.Json;
 
 namespace Inspector.Web.Controllers
 {
@@ -55,12 +56,13 @@ namespace Inspector.Web.Controllers
         /// </summary>
         /// <param name="webRequest"></param>
         /// <returns></returns>
-        public JsonResult FeatureUsage(FeatureUsageWebRequest webRequest)
+        public ContentResult FeatureUsage(FeatureUsageWebRequest webRequest)
         {
             var request = _featureUsageRequestMapper.Map(webRequest);
             var usage = _getFeatureUsageCommand.Execute(request);
+            var json = JsonConvert.SerializeObject(usage);
 
-            return Json(usage, JsonRequestBehavior.AllowGet);
+            return Content(json, "application/json");
         }
     }
 }
